@@ -6,10 +6,10 @@ class SpecialistCard extends StatelessWidget {
     required this.specialty,
     required this.numberOfProfessionals,
     required this.color,
-    required this.icon,
+    required this.image,
   });
 
-  final Icon icon;
+  final Widget image;
   final String specialty;
   final int numberOfProfessionals;
   final Color color;
@@ -34,7 +34,10 @@ class SpecialistCard extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         color: Colors.white),
-                    child: icon,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: image,
+                    ),
                   ),
                   const SizedBox(height: 8.0),
                   Text(

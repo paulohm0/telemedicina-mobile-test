@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:telemedicina_mobile_test/models/home_specialist_model.dart';
+import 'package:telemedicina_mobile_test/repositories/dio_client.dart';
+import 'package:telemedicina_mobile_test/repositories/specialist_repository.dart';
 import 'package:telemedicina_mobile_test/widgets/bottom_nav_bar.dart';
 import 'package:telemedicina_mobile_test/widgets/help_box.dart';
 import 'package:telemedicina_mobile_test/widgets/specialist_card.dart';
+
+import '../widgets/card_connection_error.dart';
+import '../widgets/card_connection_waiting.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,7 +19,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final String nameMock = 'Paulo Henrique';
-  final List<SpecialistCard> specialistCardList = [];
+  final SpecialistRepository specialistRepository =
+      SpecialistRepository(DioClient());
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,38 +57,39 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(
                 height: 180,
-                child: ListView(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  children: const [
-                    SpecialistCard(
-                      specialty: 'Cardiologista',
-                      numberOfProfessionals: 38,
-                      color: Color(0xFFE5495E),
-                      icon: Icon(
-                        Icons.monitor_heart_sharp,
-                        size: 48.0,
-                      ),
-                    ),
-                    SpecialistCard(
-                      specialty: 'Dentista',
-                      numberOfProfessionals: 19,
-                      color: Color(0xFFF6AF3D),
-                      icon: Icon(
-                        Icons.monitor_heart_sharp,
-                        size: 48.0,
-                      ),
-                    ),
-                    SpecialistCard(
-                      specialty: 'Pediatra',
-                      numberOfProfessionals: 9,
-                      color: Color(0xFF7349E5),
-                      icon: Icon(
-                        Icons.monitor_heart_sharp,
-                        size: 48.0,
-                      ),
-                    ),
-                  ],
+                child: FutureBuilder<List<HomeSpecialistModel>>(
+                  future: specialistRepository.getHomeSpecialist(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CardWaitingConnection();
+                    } else if (snapshot.hasError) {
+                      return const CardErrorConnection();
+                    } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                      late List<HomeSpecialistModel> specialistHomeList =
+                          snapshot.data ?? [];
+                      return ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: specialistHomeList.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            final HomeSpecialistModel specialistModel =
+                                specialistHomeList[index];
+                            return SpecialistCard(
+                              specialty: specialistModel.specialistName ?? '',
+                              numberOfProfessionals: 38,
+                              color: Color(specialistModel.color),
+                              image: SvgPicture.network(
+                                specialistModel.imageUrl,
+                                colorFilter: ColorFilter.mode(
+                                    Color(specialistModel.color),
+                                    BlendMode.srcIn),
+                              ),
+                            );
+                          });
+                    } else {
+                      return const Text("Nenhum dado encontrado");
+                    }
+                  },
                 ),
               ),
               const SizedBox(height: 16.0),
