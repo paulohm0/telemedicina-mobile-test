@@ -1,7 +1,7 @@
 class HomeSpecialistModel {
   final String specialistName;
   final String imageUrl;
-  final num total;
+  final int total;
   final String hexCodeColor;
 
   HomeSpecialistModel({

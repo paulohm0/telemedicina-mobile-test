@@ -4,11 +4,11 @@ import 'package:telemedicina_mobile_test/models/home_specialist_model.dart';
 import 'package:telemedicina_mobile_test/repositories/dio_client.dart';
 import 'package:telemedicina_mobile_test/repositories/specialist_repository.dart';
 import 'package:telemedicina_mobile_test/widgets/bottom_nav_bar.dart';
-import 'package:telemedicina_mobile_test/widgets/help_box.dart';
-import 'package:telemedicina_mobile_test/widgets/specialist_card.dart';
+import 'package:telemedicina_mobile_test/widgets/homescreen_widgets/help_box.dart';
+import 'package:telemedicina_mobile_test/widgets/homescreen_widgets/specialist_card.dart';
 
-import '../widgets/card_connection_error.dart';
-import '../widgets/card_connection_waiting.dart';
+import '../widgets/homescreen_widgets/card_connection_error.dart';
+import '../widgets/homescreen_widgets/card_connection_waiting.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -74,15 +74,22 @@ class _HomeScreenState extends State<HomeScreen> {
                           itemBuilder: (context, index) {
                             final HomeSpecialistModel specialistModel =
                                 specialistHomeList[index];
-                            return SpecialistCard(
-                              specialty: specialistModel.specialistName ?? '',
-                              numberOfProfessionals: 38,
-                              color: Color(specialistModel.color),
-                              image: SvgPicture.network(
-                                specialistModel.imageUrl,
-                                colorFilter: ColorFilter.mode(
-                                    Color(specialistModel.color),
-                                    BlendMode.srcIn),
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 16.0),
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(10),
+                                onTap: () {},
+                                child: SpecialistCard(
+                                  specialty: specialistModel.specialistName,
+                                  numberOfProfessionals: specialistModel.total,
+                                  color: Color(specialistModel.color),
+                                  image: SvgPicture.network(
+                                    specialistModel.imageUrl,
+                                    colorFilter: ColorFilter.mode(
+                                        Color(specialistModel.color),
+                                        BlendMode.srcIn),
+                                  ),
+                                ),
                               ),
                             );
                           });
