@@ -12,7 +12,7 @@ class CardErrorConnection extends StatelessWidget {
         child: Row(
           children: [
             Image.asset(
-              'assets/error_connection.png',
+              'assets/image_error_connection.png',
               width: 100,
               height: 100,
             ),

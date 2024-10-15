@@ -78,7 +78,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               padding: const EdgeInsets.only(right: 16.0),
                               child: InkWell(
                                 borderRadius: BorderRadius.circular(10),
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      arguments: specialistModel.specialistName,
+                                      context,
+                                      '/specialist_details_screen');
+                                },
                                 child: SpecialistCard(
                                   specialty: specialistModel.specialistName,
                                   numberOfProfessionals: specialistModel.total,

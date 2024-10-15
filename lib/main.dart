@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:telemedicina_mobile_test/screens/home_screen.dart';
+import 'package:telemedicina_mobile_test/screens/specialist_details_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      initialRoute: '/homescreen',
+      initialRoute: '/home_screen',
       routes: {
-        '/homescreen': (context) => const HomeScreen(),
+        '/home_screen': (context) => const HomeScreen(),
+        '/specialist_details_screen': (context) =>
+            const SpecialistDetailsScreen(),
       },
     );
   }
