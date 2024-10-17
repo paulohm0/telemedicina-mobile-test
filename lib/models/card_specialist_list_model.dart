@@ -1,7 +1,7 @@
 class CardSpecialistListModel {
   final String? name;
   final String? description;
-  final double? distance;
+  final num? distance;
   final Actions? actions;
 
   CardSpecialistListModel({
@@ -15,7 +15,7 @@ class CardSpecialistListModel {
     return CardSpecialistListModel(
       name: json["name"],
       description: json["description"],
-      distance: json["distance"],
+      distance: json["distance"] ?? 0.0,
       actions:
           json["actions"] == null ? null : Actions.fromJson(json["actions"]),
     );

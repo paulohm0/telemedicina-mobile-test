@@ -26,27 +26,39 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       unselectedItemColor: Colors.grey,
       items: const [
         BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_filled,
-              size: 24,
+            icon: Padding(
+              padding: EdgeInsets.only(top: 8.0),
+              child: Icon(
+                Icons.home_filled,
+                size: 24,
+              ),
             ),
             label: ''),
         BottomNavigationBarItem(
-            icon: Icon(
-              Icons.mode_comment_sharp,
-              size: 24,
+            icon: Padding(
+              padding: EdgeInsets.only(top: 8.0),
+              child: Icon(
+                Icons.mode_comment_sharp,
+                size: 24,
+              ),
             ),
             label: ''),
         BottomNavigationBarItem(
-            icon: Icon(
-              Icons.notifications_active,
-              size: 24,
+            icon: Padding(
+              padding: EdgeInsets.only(top: 8.0),
+              child: Icon(
+                Icons.notifications_active,
+                size: 24,
+              ),
             ),
             label: ''),
         BottomNavigationBarItem(
-            icon: Icon(
-              Icons.menu_sharp,
-              size: 24,
+            icon: Padding(
+              padding: EdgeInsets.only(top: 8.0),
+              child: Icon(
+                Icons.menu_sharp,
+                size: 24,
+              ),
             ),
             label: ''),
       ],

@@ -14,7 +14,7 @@ class SpecialistRepository {
   );
 
   final String listSpecialistHome = "/api/specialist-home";
-  final String listSpecialistHeart = "/api/list_specialist_heart.json";
+  final String listSpecialistHeart = "/api/list_specialist_heart";
   final String listSpecialistDentalCare =
       "/api/list_specialist_dental_care.json";
   final String listSpecialistDermatology =

@@ -24,14 +24,16 @@ class HelpBox extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
         child: Column(
           children: [
             icon,
             Text(
               text,
               style: const TextStyle(
-                  color: Colors.black54, fontWeight: FontWeight.bold),
+                  color: Colors.black54,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12),
             ),
           ],
         ),

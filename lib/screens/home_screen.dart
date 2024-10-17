@@ -10,6 +10,16 @@ import 'package:telemedicina_mobile_test/widgets/homescreen_widgets/specialist_c
 import '../widgets/homescreen_widgets/card_connection_error.dart';
 import '../widgets/homescreen_widgets/card_connection_waiting.dart';
 
+class DetailsSpecialistArgs {
+  final String specialistName;
+  final int specialistTotal;
+
+  DetailsSpecialistArgs({
+    required this.specialistName,
+    required this.specialistTotal,
+  });
+}
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -32,7 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(
+              right: 8.0, left: 8.0, bottom: 8.0, top: 32.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -56,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                height: 180,
+                height: 170,
                 child: FutureBuilder<List<HomeSpecialistModel>>(
                   future: specialistRepository.getHomeSpecialist(),
                   builder: (context, snapshot) {
@@ -80,7 +91,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 onTap: () {
                                   Navigator.pushNamed(
-                                      arguments: specialistModel.specialistName,
+                                      arguments: DetailsSpecialistArgs(
+                                        specialistName:
+                                            specialistModel.specialistName,
+                                        specialistTotal: specialistModel.total,
+                                      ),
                                       context,
                                       '/specialist_details_screen');
                                 },

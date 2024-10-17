@@ -12,7 +12,7 @@ class CardSpecialistDetails extends StatelessWidget {
   });
 
   final String? specialistName;
-  final double? distance;
+  final num? distance;
   final String? description;
   final String? chat;
   final String? call;
@@ -49,7 +49,7 @@ class CardSpecialistDetails extends StatelessWidget {
                     'Distância $distance Km',
                     style: const TextStyle(
                         fontSize: 12,
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w700,
                         color: Colors.black54),
                   ),
                   const SizedBox(height: 4.0),
@@ -72,7 +72,10 @@ class CardSpecialistDetails extends StatelessWidget {
                             onPressed: () async {
                               final url = Uri.parse(chat ?? '');
                               if (await canLaunchUrl(url)) {
-                                await launchUrl(url);
+                                await launchUrl(
+                                  url,
+                                  mode: LaunchMode.externalApplication,
+                                );
                               } else {
                                 throw 'Não foi possivel abrir $url';
                               }
