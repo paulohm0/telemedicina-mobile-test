@@ -17,7 +17,6 @@ link do teste : https://github.com/PortalTelemedicina/mobile-test
 
 <p float="left">
 <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdW40MGQ0c2kyNTV6MnRzOWJob2NpMWdham82cmNrenQwN240emdzMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2q9RpJlZO2m7Uz9JT7/giphy.gif" alt="Tela do App" width="300"/>
-<img src="https://imgur.com/kcnpWtC.png" alt="Tela do App" width="300"/>
-<img src="https://imgur.com/5UilrLz.png" alt="Tela do App" width="300"/>
-<img src="https://imgur.com/KYdiTGw.png" alt="Tela do App" width="300"/>
+<img src="https://imgur.com/a/65r6Xo3" alt="Tela do App" width="300"/>
+<img src="https://imgur.com/a/Wshg7e2" alt="Tela do App" width="300"/>
 </p>
